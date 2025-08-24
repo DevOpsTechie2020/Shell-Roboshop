@@ -6,7 +6,7 @@ ZONE_ID="Z08590672HICOEP27BESX" #replace with your Zone ID
 DOMAIN_NAME="dive2devops.com" #replace with yoyr domain
 for instances in ${INSTANCES[@]}
 do
-    INSTANCE_ID=$(aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type t2.micro --security-group-ids sg-0faec7651c2f9d221 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" --query "Instance[0].InstanceId" --output text)
+    INSTANCE_ID=$(aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type t2.micro --security-group-ids sg-0faec7651c2f9d221 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instances}]" --query "Instance[0].InstanceId" --output text)
     if [ $instances != "FRONTEND" ]
     then
         IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query "Reservations[0].Instances[0].PrivateIpAddress" --output text)
