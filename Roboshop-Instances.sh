@@ -21,16 +21,16 @@ do
     --change-batch '
     {
         "Comment": "Creating or Updating a record set for cognito endpoint"
-        ,"Changes": [{
-        "Action"              : "UPSERT"
-        ,"ResourceRecordSet"  : {
-            "Name"              : "'$RECORD_NAME'"
-            ,"Type"             : "A"
-            ,"TTL"              : 1
-            ,"ResourceRecords"  : [{
-                "Value"         : "'$IP'"
-            }]
-        }
+        "Changes": [{
+            "Action"             : "UPSERT"
+            "ResourceRecordSet"  : {
+                "Name"             : "'$instance'.'$DOMAIN_NAME'"
+                "Type"             : "A"
+                "TTL"              : 1
+                "ResourceRecords"  : [{
+                    "Value"        : "'$IP'"
+                }]
+            }
         }]
     }'
 done
